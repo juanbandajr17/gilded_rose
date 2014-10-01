@@ -1,10 +1,38 @@
 class GildedRose
+  class ItemFactory
+    def self.get_wrapped_item(item)
+
+    end
+  end
+
+  class WrapItem < Item
+
+    def update_quality
+      update_sell_in
+    end
+
+    def 
+
+  end
+
+  class AgedBrieItem < WrapItem
+    def update_quality # custom
+    end
+  end
+
+class AgedBrieItem
+end
 
   def initialize(items)
-    @items = items
+    @items = items.map {|i| ItemFactory.get_wrapped_item(i) }
+
   end
 
   def update_quality()
+    @items.each do |item|
+      item.update_quality()
+    end
+
     @items.each do |item|
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
